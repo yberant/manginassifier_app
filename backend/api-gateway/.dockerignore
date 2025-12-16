@@ -1,0 +1,34 @@
+# ============================================
+# API GATEWAY .dockerignore
+# ============================================
+# Files that are NOT copied to the container
+
+# Dependencies (installed with npm install)
+node_modules
+
+# Logs
+npm-debug.log
+yarn-debug.log
+*.log
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Build output (generated with npm run build)
+dist
+
+# Tests
+coverage
+
+# Environment
+.env.local
+.env.development
+
+# IDE
+.vscode
+.idea

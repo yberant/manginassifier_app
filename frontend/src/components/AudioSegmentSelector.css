@@ -1,0 +1,224 @@
+/* ============================================
+   AUDIO SEGMENT SELECTOR STYLES
+   ============================================ */
+
+.audio-segment-selector {
+  width: 100%;
+  max-width: 100%;
+  min-height: 400px;
+}
+
+/* Waveform Container */
+.waveform-container {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  min-height: 180px;
+  max-height: 180px;
+}
+
+.waveform {
+  width: 100%;
+  height: 150px;
+  min-height: 150px;
+  max-height: 150px;
+  cursor: pointer;
+  background-color: #fafafa;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  position: relative;
+  contain: layout size style;
+}
+
+/* WaveSurfer specific styles */
+.waveform wave {
+  overflow: hidden !important;
+  will-change: transform;
+}
+
+.waveform canvas {
+  display: block !important;
+  max-width: 100%;
+  width: 100% !important;
+  height: 150px !important;
+}
+
+/* Segment Info */
+.segment-info {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+  border: 1px solid var(--color-border);
+  min-height: 60px;
+}
+
+.time-display {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.time-display .label {
+  font-weight: 600;
+  color: var(--color-text);
+  font-size: 0.95rem;
+}
+
+.time-display .time-range {
+  font-family: 'Courier New', monospace;
+  color: var(--color-primary);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.time-display .duration {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  flex-wrap: nowrap;
+  min-height: 48px;
+}
+
+.control-button {
+  flex: 1;
+  min-width: 150px;
+  max-width: 200px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.control-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.control-button.secondary {
+  background-color: var(--color-background);
+}
+
+.control-button.secondary:hover {
+  background-color: var(--color-surface);
+  border-color: var(--color-primary);
+}
+
+.control-button.primary {
+  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  color: white;
+  border: none;
+  font-weight: 600;
+}
+
+.control-button.primary:hover {
+  background: linear-gradient(135deg, #f7931e 0%, #ff6b35 100%);
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+
+.control-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.control-button:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Small Spinner for Button */
+.spinner-small {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+}
+
+/* Playback Info */
+.playback-info {
+  text-align: center;
+  padding: var(--spacing-sm);
+  background-color: var(--color-background);
+  border-radius: var(--radius-sm);
+  font-family: 'Courier New', monospace;
+  color: var(--color-text-secondary);
+  min-height: 40px;
+}
+
+.playback-info .current-time {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.playback-info .separator {
+  margin: 0 var(--spacing-xs);
+}
+
+/* Loading State */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-xl);
+  min-height: 200px;
+}
+
+.loading-state .spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: var(--spacing-md);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-state p {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
+
+  .control-button {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .time-display {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+  }
+}

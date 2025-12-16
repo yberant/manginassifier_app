@@ -1,0 +1,118 @@
+# ============================================
+# DOCKER COMPOSE - MANGINASSIFIER APP
+# ============================================
+# Orchestration of all application services
+
+version: '3.8'
+
+services:
+  # ML SERVICE - Genre prediction
+  ml-service:
+    build:
+      context: ./backend/ml-service
+      dockerfile: Dockerfile
+
+    container_name: manginassifier-ml
+
+    # Port 5002: ML prediction service
+    ports:
+      - "5002:5002"
+
+    # Environment variables
+    environment:
+      - PORT=5002
+      - HOST=0.0.0.0
+
+    # Internal network for inter-service communication
+    networks:
+      - manginassifier-network
+
+    restart: unless-stopped
+
+  # AUDIO SERVICE - Audio processing
+  audio-service:
+    build:
+      context: ./backend/audio-service
+      dockerfile: Dockerfile
+
+    container_name: manginassifier-audio
+
+    # Port 5001: Audio processing service with Spleeter
+    ports:
+      - "5001:5001"
+
+    # Environment variables
+    environment:
+      - PORT=5001
+      - HOST=0.0.0.0
+
+    # Volume for temporary files (improves performance)
+    volumes:
+      - audio-temp:/tmp
+
+    networks:
+      - manginassifier-network
+
+    restart: unless-stopped
+
+  # API GATEWAY - Service orchestrator
+  api-gateway:
+    build:
+      context: ./backend/api-gateway
+      dockerfile: Dockerfile
+
+    container_name: manginassifier-gateway
+
+    # Port 5000: Main API Gateway
+    ports:
+      - "5000:5000"
+
+    # Environment variables to connect with other services
+    environment:
+      - PORT=5000
+      - AUDIO_SERVICE_URL=http://audio-service:5001
+      - ML_SERVICE_URL=http://ml-service:5002
+      - NODE_ENV=production
+
+    # Depends on ML and Audio services
+    # Docker will wait for these to be running before starting the gateway
+    depends_on:
+      - ml-service
+      - audio-service
+
+    networks:
+      - manginassifier-network
+
+    restart: unless-stopped
+
+  # FRONTEND - React + Vite + Node.js
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+
+    container_name: manginassifier-frontend
+
+    # Port 3000: Web interface
+    # localhost:3000 → container port 3000 (Vite preview server)
+    ports:
+      - "3000:3000"
+
+    # Depends on API Gateway
+    depends_on:
+      - api-gateway
+
+    networks:
+      - manginassifier-network
+
+    restart: unless-stopped
+
+# NETWORKS
+networks:
+  manginassifier-network:
+    driver: bridge
+
+# VOLUMES
+volumes:
+  # Volume for temporary audio files
+  audio-temp:

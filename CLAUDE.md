@@ -1,0 +1,5 @@
+- por cierto, haré esto para todos los géneros. Cuando diga "encuentra reemplazos para tal genero" o algo así ya sabes a lo que me refiero
+- recuerda que todo titulo, nombre de artista o album con coma debe venir entre comillas!
+- a pesar de que cuando agregues no ya no hay que preocuparse del limite de canciones por artista, por favor te pido que sigas considerando la variabilidad. Incluíste MUCHAS canciones de the strokes en I&A
+- cuando te pida por reemplazos, intenta que las canciones estén en deezer o youtube
+- cuando generes reemplazos. No agregues demasiadas canciones del mismo artista

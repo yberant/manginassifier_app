@@ -1,0 +1,37 @@
+# ============================================
+# AUDIO SERVICE .dockerignore
+# ============================================
+# Files that are NOT copied to the container
+
+# Python cache
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+env/
+venv/
+.venv/
+*.egg-info
+
+# Logs
+*.log
+
+# Git
+.git
+.gitignore
+
+# Documentation
+README.md
+*.md
+
+# Tests
+.pytest_cache
+.coverage
+htmlcov
+
+# Temporary files
+dist
+build

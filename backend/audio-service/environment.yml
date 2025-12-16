@@ -1,0 +1,19 @@
+name: audio-service
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.10
+  - numpy<2
+  - librosa
+  - ffmpeg
+  - pip
+  - pip:
+    - fastapi
+    - uvicorn[standard]
+    - python-multipart
+    - python-dotenv
+    - pydantic
+    - spleeter
+    - soundfile
+    - ffmpeg-python

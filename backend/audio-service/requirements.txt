@@ -1,0 +1,16 @@
+# Audio Service Dependencies
+# Para uso con pip en Docker
+
+# Core dependencies
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+pydantic
+
+# Audio processing
+spleeter
+librosa
+soundfile
+ffmpeg-python
+numpy<2

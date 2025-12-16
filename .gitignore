@@ -1,0 +1,25 @@
+# Node.js
+node_modules/
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+
+# Environment files
+.env
+!.env.example
+
+# Claude AI
+.claude/
+
+# Project specific
+backend/api-gateway/uploads/
+
+backend/ml-service/models/*.keras
+backend/ml-service/models/*.h5
+!backend/ml-service/models/README.md
+!backend/ml-service/models/.gitkeep
+
+backend/audio-service/pretrained_models/
