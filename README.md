@@ -2,7 +2,7 @@
 
 This repository contains the source code for web application for classifying music genres using machine learning with multi-channel audio processing.
 
-Claude code AI was used to assist the development of this project. 
+Claude code AI was used to assist the development of this project.
 
 ## Prerequisites
 
@@ -11,8 +11,8 @@ Claude code AI was used to assist the development of this project.
 - At least 8 GB RAM available
 - 5 GB free disk space
 - In case you want to test the application WITHOUT docker, you should have:
-    - node version 20.11.x or higher
-    - conda version 25.9.1
+  - node version 20.11.x or higher
+  - conda version 25.9.1
 
 ## Quick Start
 
@@ -21,6 +21,7 @@ Claude code AI was used to assist the development of this project.
 **Important:** This repository does NOT include the trained ML model file due to its size.
 
 You need to obtain the trained model file and place it at:
+
 ```
 backend/ml-service/models/
 ```
@@ -28,6 +29,8 @@ backend/ml-service/models/
 The trained model file can be found in [this drive link](https://drive.google.com/file/d/1tZQA-UTK_W4iBk9xDFZQQ9mkBSRkSNL3/view?usp=drive_link). You should download the file `genre_classifier_v4.keras`.
 
 ### 2. Start the application
+
+Before running the application, make sure to have docker installed and running.
 
 To run application on docker containers you can execute:
 
@@ -37,20 +40,24 @@ docker-compose up -d
 
 You can also test the application without docker containers by opening multiple command lines:
 
-* frontend:
+- frontend:
+
 ```bash
 cd "<YOUR DIRECTORY>\frontend"
 npm install
 npm run dev
 ```
 
-* Api Gateway:
+- Api Gateway:
+
 ```bash
 cd "<YOUR DIRECTORY>\backend\api-gateway"
 npm install
 npm run dev
 ```
-* Audio Service:
+
+- Audio Service:
+
 ```bash
 cd "<YOUR DIRECTORY>\audio-service"
 npm  conda env create -f environment.yml
@@ -58,7 +65,8 @@ conda activate audio-service
 python main.py
 ```
 
-* ML Service: 
+- ML Service:
+
 ```bash
 cd "<YOUR DIRECTORY>\ml-service"
 npm  conda env create -f environment.yml
@@ -94,12 +102,12 @@ Audio Service  │  ML Service
 
 ## Services
 
-| Service | Port | Description |
-|---------|------|-------------|
-| Frontend | 3000 | React web interface |
-| API Gateway | 5000 | Request orchestration |
-| Audio Service | 5001 | Audio processing with Spleeter |
-| ML Service | 5002 | Genre prediction with TensorFlow |
+| Service       | Port | Description                      |
+| ------------- | ---- | -------------------------------- |
+| Frontend      | 3000 | React web interface              |
+| API Gateway   | 5000 | Request orchestration            |
+| Audio Service | 5001 | Audio processing with Spleeter   |
+| ML Service    | 5002 | Genre prediction with TensorFlow |
 
 ## Genres Supported
 
